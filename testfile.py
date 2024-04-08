@@ -40,18 +40,18 @@ key_terms = key_terms_generator.generate_key_terms(text)
 print("Key Terms:", key_terms)
 
 
-key_terms = [
-    "acquiesce",
-    "benevolent",
-    "cogitate",
-    "deleterious",
-    "ebullient",
-    "facetious",
-    "garrulous",
-    "hedonistic",
-    "impecunious",
-    "juxtapose"
-]
+# key_terms = [
+#     "acquiesce",
+#     "benevolent",
+#     "cogitate",
+#     "deleterious",
+#     "ebullient",
+#     "facetious",
+#     "garrulous",
+#     "hedonistic",
+#     "impecunious",
+#     "juxtapose"
+# ]
 # Summarize the key terms
 summaries = key_terms_generator.summarize_key_terms(key_terms)
 for term, summary in zip(key_terms, summaries):
