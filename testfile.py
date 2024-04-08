@@ -19,7 +19,7 @@ class T5KeyTermsGenerationPipeline:
     def summarize_key_terms(self, key_terms_list, max_length=100):
         summaries = []
         for term in key_terms_list:
-            summary_prompt = f"Summarize: '{term}' "
+            summary_prompt = f"Define: '{term}' "
             input_ids = self.tokenizer.encode(summary_prompt, return_tensors="pt", max_length=512, truncation=True)
             output_ids = self.model.generate(input_ids, max_length=max_length, num_beams=2, early_stopping=True)
             summary_text = self.tokenizer.decode(output_ids[0], skip_special_tokens=True)

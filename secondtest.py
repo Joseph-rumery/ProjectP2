@@ -2,12 +2,12 @@ from transformers import T5Tokenizer, T5ForConditionalGeneration
 import pandas as pd
 
 class T5KeyTermsGenerationPipeline:
-    def __init__(self, model_name_or_path="google-t5/t5-small"):
+    def __init__(self, model_name_or_path="t5-base"):
         self.tokenizer = T5Tokenizer.from_pretrained(model_name_or_path, legacy=False)
         self.model = T5ForConditionalGeneration.from_pretrained(model_name_or_path)
 
     def generate_key_terms(self, text, max_length=50, min_length=10):
-        input_text = "question: What are 5 keywords in this passage? context: " + text
+        input_text = "question: What are the keywords? context: " + text
         input_ids = self.tokenizer.encode(input_text, return_tensors="pt", max_length=5000, truncation=True)
         key_terms_ids = self.model.generate(input_ids, max_length=max_length, min_length=min_length, num_beams=2, early_stopping=True)
         key_terms = self.tokenizer.decode(key_terms_ids[0], skip_special_tokens=True)
